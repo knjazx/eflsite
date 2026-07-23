@@ -1,4 +1,4 @@
-import { MongoClient, Db, Collection as MongoCollection } from 'mongodb';
+import { MongoClient, Db, Collection as MongoCollection, Document } from 'mongodb';
 
 if (!process.env.MONGODB_URI) {
   throw new Error('Добавьте MONGODB_URI в .env файл');
@@ -30,7 +30,7 @@ export async function getDb(): Promise<Db> {
   return client.db('efl_league');
 }
 
-export async function getCollection<T = any>(name: string): Promise<MongoCollection<T>> {
+export async function getCollection<T extends Document = Document>(name: string): Promise<MongoCollection<T>> {
   const db = await getDb();
   return db.collection<T>(name);
 }
