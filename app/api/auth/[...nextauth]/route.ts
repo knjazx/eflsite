@@ -4,7 +4,7 @@ import { getCollection, COLLECTION_MAP } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import type { User } from '@/types';
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
